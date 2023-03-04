@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Services
+namespace DataAccess.MSSQL.Stores
 {
-    public interface ITobaccoService
+    class ManufacturerStore
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core.Stores
 {
-    interface ITobaccoStore
+    public interface ITobaccoStore
     {
     }
 }

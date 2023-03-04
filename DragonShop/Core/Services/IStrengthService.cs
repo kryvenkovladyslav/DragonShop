@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core.Services
 {
-    interface IStrengthService
+    public interface IStrengthService
     {
     }
 }

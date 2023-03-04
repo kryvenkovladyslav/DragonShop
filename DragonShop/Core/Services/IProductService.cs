@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core.Services
 {
-    interface IProductService
+    public interface IProductService
     {
     }
 }
