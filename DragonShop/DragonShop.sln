@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{BE0C4B36-5A36-40C9-9F8E-82DC6D85D317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{BE0C4B36-5A36-40C9-9F8E-82DC6D85D317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.MSSQL", "DataAccess.MSSQL\DataAccess.MSSQL.csproj", "{866B752B-8825-4FD0-A67A-204D41CE1F6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.MSSQL", "DataAccess.MSSQL\DataAccess.MSSQL.csproj", "{866B752B-8825-4FD0-A67A-204D41CE1F6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{48E7FDB9-CEF9-47AE-949E-E5C785C36418}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{866B752B-8825-4FD0-A67A-204D41CE1F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{866B752B-8825-4FD0-A67A-204D41CE1F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{866B752B-8825-4FD0-A67A-204D41CE1F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E7FDB9-CEF9-47AE-949E-E5C785C36418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E7FDB9-CEF9-47AE-949E-E5C785C36418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E7FDB9-CEF9-47AE-949E-E5C785C36418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E7FDB9-CEF9-47AE-949E-E5C785C36418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
