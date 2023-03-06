@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessLogic.Services
 {
-    class ProductService
+    public sealed class ProductService
     {
     }
 }

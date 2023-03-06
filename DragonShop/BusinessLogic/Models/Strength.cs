@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessLogic.Models
 {
-    class Strength
+    public sealed class  Strength
     {
     }
 }
