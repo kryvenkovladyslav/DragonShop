@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Stores
+namespace BusinessLogic.Models
 {
-    public interface IManufacturerStore
+    public sealed class TobaccoBL
     {
     }
 }

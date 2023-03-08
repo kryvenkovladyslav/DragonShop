@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccess.MSSQL.Models
 {
-    public sealed class Product : IEquatable<Product>
+    public sealed class ProductDAL : IEquatable<ProductDAL>
     {
         public long ID { get; set; }
         public string Name { get; set; }
@@ -14,8 +14,8 @@ namespace DataAccess.MSSQL.Models
         public string ImagePath { get; set; }
         public string DescriptionPath { get; set; }
 
-        public Product() { }
-        public Product(Product product)
+        public ProductDAL() { }
+        public ProductDAL(ProductDAL product)
         {
             ID = product.ID;
             Name = product.Name;
@@ -25,7 +25,7 @@ namespace DataAccess.MSSQL.Models
             ImagePath = product.ImagePath;
             DescriptionPath = product.DescriptionPath;
         }
-        public Product(long id, string name, decimal price, bool isAvailable, int discount, string imagePath, string descriptionPath)
+        public ProductDAL(long id, string name, decimal price, bool isAvailable, int discount, string imagePath, string descriptionPath)
         {
             ID = id;
             Name = name;
@@ -36,14 +36,13 @@ namespace DataAccess.MSSQL.Models
             DescriptionPath = descriptionPath;
         }
 
-        public bool Equals([AllowNull] Product other)
+        public bool Equals([AllowNull] ProductDAL other)
         {
             return other == null ? false : ID == other.ID;
         }
         public sealed override bool Equals(object obj)
         {
-            Product product = obj as Product;
-            return product == null ? false : Equals(product);
+            return Equals(obj as ProductDAL);
         }
         public sealed override int GetHashCode()
         {

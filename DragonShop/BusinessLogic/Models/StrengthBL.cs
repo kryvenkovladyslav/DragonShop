@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessLogic.Models
 {
-    public sealed class Product
+    public sealed class  StrengthBL
     {
     }
 }

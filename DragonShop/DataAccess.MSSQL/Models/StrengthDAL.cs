@@ -4,31 +4,30 @@ using System.Text;
 
 namespace DataAccess.MSSQL.Models
 {
-    public sealed class Strength : IEquatable<Strength>
+    public sealed class StrengthDAL : IEquatable<StrengthDAL>
     {
         public long ID { get; set; }
         public string Kind { get; set; }
 
-        public Strength() { }
-        public Strength(Strength strength)
+        public StrengthDAL() { }
+        public StrengthDAL(StrengthDAL strength)
         {
             ID = strength.ID;
             Kind = strength.Kind;
         }
-        public Strength(int id, string kind)
+        public StrengthDAL(int id, string kind)
         {
             ID = id;
             Kind = kind;
         }
 
-        public bool Equals([AllowNull] Strength other)
+        public bool Equals([AllowNull] StrengthDAL other)
         {
             return other == null ? false : ID == other.ID;
         }
         public sealed override bool Equals(object obj)
         {
-            Strength strength = obj as Strength;
-            return strength == null ? false : Equals(strength);
+            return Equals(obj as StrengthDAL);
         }
         public sealed override string ToString()
         {

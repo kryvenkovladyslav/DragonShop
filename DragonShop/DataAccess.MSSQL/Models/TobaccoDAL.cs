@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccess.MSSQL.Models
 {
-    public sealed class Tobacco : IEquatable<Tobacco>
+    public sealed class TobaccoDAL : IEquatable<TobaccoDAL>
     {
         public long ID { get; set; }
         public string Name { get; set; }
@@ -19,8 +19,8 @@ namespace DataAccess.MSSQL.Models
         public bool IsSweet { get; set; }
         public bool IsIced { get; set; }
 
-        public Tobacco() { }
-        public Tobacco(Tobacco tobacco)
+        public TobaccoDAL() { }
+        public TobaccoDAL(TobaccoDAL tobacco)
         {
             ID = tobacco.ID;
             Name = tobacco.Name;
@@ -33,9 +33,9 @@ namespace DataAccess.MSSQL.Models
             IsMixed = tobacco.IsMixed;
             IsMint = tobacco.IsMint;
             IsSweet = tobacco.IsSweet;
-            tobacco.IsIced = tobacco.IsIced;
+            IsIced = tobacco.IsIced;
         }
-        public Tobacco(long id, string name, string leaf, double weight, string slicing, string heatResistance,
+        public TobaccoDAL(long id, string name, string leaf, double weight, string slicing, string heatResistance,
             string package, bool isSmoky, bool isMixed, bool isMint, bool isSweet, bool isIced)
         {
             ID = id;
@@ -51,14 +51,13 @@ namespace DataAccess.MSSQL.Models
             IsIced = isIced;
         }
 
-        public bool Equals([AllowNull] Tobacco other)
+        public bool Equals([AllowNull] TobaccoDAL other)
         {
             return other == null ? false : ID == other.ID;
         }
         public sealed override bool Equals(object obj)
         {
-            Tobacco tobacco = obj as Tobacco;
-            return tobacco == null ? false : Equals(tobacco);
+            return Equals(obj as TobaccoDAL);
         }
         public sealed override int GetHashCode()
         {

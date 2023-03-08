@@ -5,11 +5,17 @@ namespace DataAccess.MSSQL.Infrastructure
 {
     public sealed class DatabaseContext : DbContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
-
-        public DbSet<Manufacturer> Manufacturers { get; private set; }
-        public DbSet<Strength> Strengths { get; private set; }
-        public DbSet<Product> Products { get; private set; }
-        public DbSet<Tobacco> Tobaccos { get; private set; }
+        public DatabaseContext()
+        {
+            Database.EnsureCreated();
+        }
+        public DbSet<ManufacturerDAL> Manufacturer { get; private set; }
+        public DbSet<StrengthDAL> Strength { get; private set; }
+        public DbSet<ProductDAL> Product { get; private set; }
+        public DbSet<TobaccoDAL> Tobacco { get; private set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost;Database=DragonShop;Trusted_Connection=True;");
+        }
     }
 }

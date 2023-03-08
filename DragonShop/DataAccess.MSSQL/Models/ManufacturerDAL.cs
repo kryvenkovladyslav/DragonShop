@@ -1,25 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace DataAccess.MSSQL.Models
 {
-    public sealed class Manufacturer : IEquatable<Manufacturer>
+    public sealed class ManufacturerDAL : IEquatable<ManufacturerDAL>
     {
         public long ID { get; set; }
         public string Name { get; set; }
         public string ImagePath { get; set; }
         public string DescriptionPath { get; set; }
 
-        public Manufacturer() { }
-        public Manufacturer(Manufacturer manufacturer)
+        public long TobaccoID { get; set; }
+
+        public ManufacturerDAL() { }
+        public ManufacturerDAL(ManufacturerDAL manufacturer)
         {
             ID = manufacturer.ID;
             Name = manufacturer.Name;
             ImagePath = manufacturer.ImagePath;
             DescriptionPath = manufacturer.DescriptionPath;
         }
-        public Manufacturer(int id, string name, string imagePath, string descriptionPath)
+        public ManufacturerDAL(int id, string name, string imagePath, string descriptionPath)
         {
             ID = id;
             Name = name;
@@ -27,14 +30,13 @@ namespace DataAccess.MSSQL.Models
             DescriptionPath = descriptionPath;
         }
 
-        public bool Equals([AllowNull] Manufacturer other)
+        public bool Equals([AllowNull] ManufacturerDAL other)
         {
             return other == null ? false : ID == other.ID;
         }
         public sealed override bool Equals(object obj)
         {
-            Manufacturer manufacturer = obj as Manufacturer;
-            return manufacturer == null ? false : Equals(manufacturer);
+            return Equals(obj as ManufacturerDAL);
         }
         public sealed override string ToString()
         {
