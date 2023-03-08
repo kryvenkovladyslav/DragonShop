@@ -1,6 +1,5 @@
 ﻿using Core.Infrastructure;
-using DataAccess.MSSQL.Infrastructure;
-using DataAccess.MSSQL.Models;
+using DataAccess.EntityFramework.MSSQL.Infrastucture;
 using DataAccess.MSSQL.Stores;
 using Microsoft.EntityFrameworkCore;
 using System.Collections;

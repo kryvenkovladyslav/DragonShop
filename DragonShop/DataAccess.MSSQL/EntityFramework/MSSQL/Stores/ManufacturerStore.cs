@@ -1,11 +1,11 @@
-﻿using DataAccess.MSSQL.Infrastructure;
-using DataAccess.MSSQL.Interfaces;
-using DataAccess.MSSQL.Models;
+﻿using DataAccess.EntityFramework.MSSQL.Infrastucture;
+using DataAccess.Interfaces;
+using DataAccess.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataAccess.MSSQL.Stores
+namespace DataAccess.EntityFramework.MSSQL.Stores
 {
     public sealed class ManufacturerStore : IManufacturerStore
     {

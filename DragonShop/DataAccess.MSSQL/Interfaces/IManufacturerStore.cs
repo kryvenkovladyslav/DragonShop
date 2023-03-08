@@ -1,8 +1,8 @@
-﻿using DataAccess.MSSQL.Models;
+﻿using DataAccess.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DataAccess.MSSQL.Interfaces
+namespace DataAccess.Interfaces
 {
     public interface IManufacturerStore
     {

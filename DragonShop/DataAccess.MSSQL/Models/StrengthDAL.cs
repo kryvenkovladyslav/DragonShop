@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace DataAccess.MSSQL.Models
+namespace DataAccess.Models
 {
     public sealed class StrengthDAL : IEquatable<StrengthDAL>
     {

@@ -1,15 +1,15 @@
-﻿using DataAccess.MSSQL.Infrastructure;
-using DataAccess.MSSQL.Interfaces;
+﻿using DataAccess.EntityFramework.MSSQL.Infrastucture;
+using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.MSSQL.Stores
 {
-    public sealed class TobaccoStore : ITobaccoStore
+    public sealed class ProductStore : IProductStore
     {
         private readonly DatabaseContext context;
-        public TobaccoStore(DatabaseContext context)
+        public ProductStore(DatabaseContext context)
             => this.context = context;
     }
 }

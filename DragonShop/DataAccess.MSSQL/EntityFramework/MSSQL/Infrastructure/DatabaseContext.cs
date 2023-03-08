@@ -1,7 +1,7 @@
-﻿using DataAccess.MSSQL.Models;
+﻿using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.MSSQL.Infrastructure
+namespace DataAccess.EntityFramework.MSSQL.Infrastucture
 {
     public sealed class DatabaseContext : DbContext
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.MSSQL.Interfaces
+namespace DataAccess.Interfaces
 {
     public interface IProductStore
     {
