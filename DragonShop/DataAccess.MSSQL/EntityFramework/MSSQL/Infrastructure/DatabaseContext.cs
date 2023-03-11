@@ -1,4 +1,4 @@
-﻿using DataAccess.Models;
+﻿using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.EntityFramework.MSSQL.Infrastucture
@@ -9,10 +9,10 @@ namespace DataAccess.EntityFramework.MSSQL.Infrastucture
         {
             Database.EnsureCreated();
         }
-        public DbSet<ManufacturerDAL> Manufacturer { get; private set; }
-        public DbSet<StrengthDAL> Strength { get; private set; }
-        public DbSet<ProductDAL> Product { get; private set; }
-        public DbSet<TobaccoDAL> Tobacco { get; private set; }
+        public DbSet<ManufacturerCore> Manufacturer { get; private set; }
+        public DbSet<StrengthCore> Strength { get; private set; }
+        public DbSet<ProductCore> Product { get; private set; }
+        public DbSet<TobaccoCore> Tobacco { get; private set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=localhost;Database=DragonShop;Trusted_Connection=True;");

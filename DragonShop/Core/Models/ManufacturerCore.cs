@@ -2,9 +2,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace DataAccess.Models
+namespace Core.Models
 {
-    public sealed class ManufacturerDAL : IEquatable<ManufacturerDAL>
+    public sealed class ManufacturerCore : IEquatable<ManufacturerCore>
     {
         public long ID { get; set; }
         public string Name { get; set; }
@@ -13,15 +13,15 @@ namespace DataAccess.Models
 
         public long TobaccoID { get; set; }
 
-        public ManufacturerDAL() { }
-        public ManufacturerDAL(ManufacturerDAL manufacturer)
+        public ManufacturerCore() { }
+        public ManufacturerCore(ManufacturerCore manufacturer)
         {
             ID = manufacturer.ID;
             Name = manufacturer.Name;
             ImagePath = manufacturer.ImagePath;
             DescriptionPath = manufacturer.DescriptionPath;
         }
-        public ManufacturerDAL(int id, string name, string imagePath, string descriptionPath)
+        public ManufacturerCore(int id, string name, string imagePath, string descriptionPath)
         {
             ID = id;
             Name = name;
@@ -29,13 +29,13 @@ namespace DataAccess.Models
             DescriptionPath = descriptionPath;
         }
 
-        public bool Equals([AllowNull] ManufacturerDAL other)
+        public bool Equals([AllowNull] ManufacturerCore other)
         {
             return other == null ? false : ID == other.ID;
         }
         public sealed override bool Equals(object obj)
         {
-            return Equals(obj as ManufacturerDAL);
+            return Equals(obj as ManufacturerCore);
         }
         public sealed override string ToString()
         {

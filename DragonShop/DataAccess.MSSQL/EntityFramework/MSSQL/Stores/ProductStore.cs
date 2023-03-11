@@ -1,5 +1,5 @@
 ﻿using DataAccess.EntityFramework.MSSQL.Infrastucture;
-using DataAccess.Interfaces;
+using Core.Stores;
 using System;
 using System.Collections.Generic;
 using System.Text;

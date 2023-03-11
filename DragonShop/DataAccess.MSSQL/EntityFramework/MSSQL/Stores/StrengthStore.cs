@@ -1,9 +1,9 @@
 ﻿using DataAccess.EntityFramework.MSSQL.Infrastucture;
-using DataAccess.Interfaces;
-using DataAccess.Models;
+using Core.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Stores;
 
 namespace DataAccess.MSSQL.Stores
 {
@@ -13,25 +13,25 @@ namespace DataAccess.MSSQL.Stores
         public StrengthStore(DatabaseContext context)
             => this.context = context;
 
-        public async Task CreateAsync(StrengthDAL strength)
+        public async Task CreateAsync(StrengthCore strength)
         {
             await context.Strength.AddAsync(strength);
             context.SaveChanges();
         }
         public void Delete(long id)
         {
-            context.Strength.Remove(new StrengthDAL { ID = id });
+            context.Strength.Remove(new StrengthCore { ID = id });
             context.SaveChanges();
         }
-        public IEnumerable<StrengthDAL> GetAll()
+        public IEnumerable<StrengthCore> GetAll()
         {
             return context.Strength.OrderBy(strength => strength.ID).ToList();
         }
-        public async Task<StrengthDAL> GetStengthByIDAsync(long id)
+        public async Task<StrengthCore> GetStengthByIDAsync(long id)
         {
             return await context.Strength.FindAsync(id);
         }
-        public void Update(StrengthDAL strength)
+        public void Update(StrengthCore strength)
         {
             context.Strength.Update(strength);
             context.SaveChanges();

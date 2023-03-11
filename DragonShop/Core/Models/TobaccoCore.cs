@@ -2,9 +2,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace DataAccess.Models
+namespace Core.Models
 {
-    public sealed class TobaccoDAL : IEquatable<TobaccoDAL>
+    public sealed class TobaccoCore : IEquatable<TobaccoCore>
     {
         public long ID { get; set; }
         public string Name { get; set; }
@@ -19,8 +19,8 @@ namespace DataAccess.Models
         public bool IsSweet { get; set; }
         public bool IsIced { get; set; }
 
-        public TobaccoDAL() { }
-        public TobaccoDAL(TobaccoDAL tobacco)
+        public TobaccoCore() { }
+        public TobaccoCore(TobaccoCore tobacco)
         {
             ID = tobacco.ID;
             Name = tobacco.Name;
@@ -35,7 +35,7 @@ namespace DataAccess.Models
             IsSweet = tobacco.IsSweet;
             IsIced = tobacco.IsIced;
         }
-        public TobaccoDAL(long id, string name, string leaf, double weight, string slicing, string heatResistance,
+        public TobaccoCore(long id, string name, string leaf, double weight, string slicing, string heatResistance,
             string package, bool isSmoky, bool isMixed, bool isMint, bool isSweet, bool isIced)
         {
             ID = id;
@@ -51,13 +51,13 @@ namespace DataAccess.Models
             IsIced = isIced;
         }
 
-        public bool Equals([AllowNull] TobaccoDAL other)
+        public bool Equals([AllowNull] TobaccoCore other)
         {
             return other == null ? false : ID == other.ID;
         }
         public sealed override bool Equals(object obj)
         {
-            return Equals(obj as TobaccoDAL);
+            return Equals(obj as TobaccoCore);
         }
         public sealed override int GetHashCode()
         {

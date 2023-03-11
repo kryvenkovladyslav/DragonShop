@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Interfaces
+namespace Core.Stores
 {
-    public interface ITobaccoStore
+    public interface IProductStore
     {
     }
 }

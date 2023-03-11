@@ -1,9 +1,9 @@
-﻿using DataAccess.EntityFramework.MSSQL.Infrastucture;
-using DataAccess.Interfaces;
-using DataAccess.Models;
+﻿using Core.Stores;
+using Core.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccess.EntityFramework.MSSQL.Infrastucture;
 
 namespace DataAccess.EntityFramework.MSSQL.Stores
 {
@@ -13,29 +13,29 @@ namespace DataAccess.EntityFramework.MSSQL.Stores
         public ManufacturerStore(DatabaseContext context)
             => this.context = context;
 
-        public async Task CreateAsync(ManufacturerDAL manufacturerDAL)
+        public async Task CreateAsync(ManufacturerCore manufacturerDAL)
         {
             await context.Manufacturer.AddAsync(manufacturerDAL);
             context.SaveChanges();
         }
         public void Delete(long id)
         {
-            context.Manufacturer.Remove(new ManufacturerDAL { ID = id });
+            context.Manufacturer.Remove(new ManufacturerCore { ID = id });
             context.SaveChanges();
         }
-        public IEnumerable<ManufacturerDAL> GetAll()
+        public IEnumerable<ManufacturerCore> GetAll()
         {
             return context.Manufacturer.OrderBy(manufacturer => manufacturer.Name).ToList();
         }
-        public async Task<ManufacturerDAL> GetManufacturerByIDAsync(long id)
+        public async Task<ManufacturerCore> GetManufacturerByIDAsync(long id)
         {
             return await context.Manufacturer.FindAsync(id);
         }
-        public IEnumerable<ManufacturerDAL> GetSortedByDescending()
+        public IEnumerable<ManufacturerCore> GetSortedByDescending()
         {
             return context.Manufacturer.OrderByDescending(manufacturer => manufacturer.Name).ToList();
         }
-        public async Task UpdateAsync(ManufacturerDAL manufacturerDAL)
+        public async Task UpdateAsync(ManufacturerCore manufacturerDAL)
         {
             var original = await context.Manufacturer.FindAsync(manufacturerDAL);
             original.Name = original.Name;

@@ -2,32 +2,32 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace DataAccess.Models
+namespace Core.Models
 {
-    public sealed class StrengthDAL : IEquatable<StrengthDAL>
+    public sealed class StrengthCore : IEquatable<StrengthCore>
     {
         public long ID { get; set; }
         public string Kind { get; set; }
 
-        public StrengthDAL() { }
-        public StrengthDAL(StrengthDAL strength)
+        public StrengthCore() { }
+        public StrengthCore(StrengthCore strength)
         {
             ID = strength.ID;
             Kind = strength.Kind;
         }
-        public StrengthDAL(int id, string kind)
+        public StrengthCore(int id, string kind)
         {
             ID = id;
             Kind = kind;
         }
 
-        public bool Equals([AllowNull] StrengthDAL other)
+        public bool Equals([AllowNull] StrengthCore other)
         {
             return other == null ? false : ID == other.ID;
         }
         public sealed override bool Equals(object obj)
         {
-            return Equals(obj as StrengthDAL);
+            return Equals(obj as StrengthCore);
         }
         public sealed override string ToString()
         {

@@ -1,4 +1,6 @@
 ﻿using Core.Infrastructure;
+using Core.Models;
+using Core.Stores;
 using DataAccess.EntityFramework.MSSQL.Infrastucture;
 using DataAccess.MSSQL.Stores;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,7 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            StrengthStore store = new StrengthStore(new DatabaseContext());
+            IStrengthStore store = new StrengthStore(new DatabaseContext());
             var entities = store.GetAll();
 
             foreach (var entity in entities)
