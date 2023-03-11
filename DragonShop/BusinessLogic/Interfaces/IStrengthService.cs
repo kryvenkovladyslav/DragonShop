@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Services
+namespace BusinessLogic.Interfaces
 {
-    public interface ITobaccoService
+    public interface IStrengthService
     {
     }
 }

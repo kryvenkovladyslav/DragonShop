@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.EntityFramework.MSSQL.Infrastucture;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.EntityFramework.MSSQL.Stores
 {
@@ -23,13 +24,17 @@ namespace DataAccess.EntityFramework.MSSQL.Stores
             context.Manufacturer.Remove(new ManufacturerCore { ID = id });
             context.SaveChanges();
         }
-        public IEnumerable<ManufacturerCore> GetAll()
+        public IEnumerable<ManufacturerCore> GetAll(bool includeTobassos = false)
         {
-            return context.Manufacturer.OrderBy(manufacturer => manufacturer.Name).ToList();
+            return includeTobassos ?
+                context.Manufacturer.Include(m => m.Tobaccos).OrderBy(manufacturer => manufacturer.Name).ToList() :
+                context.Manufacturer.OrderBy(manufacturer => manufacturer.Name).ToList();
         }
-        public async Task<ManufacturerCore> GetManufacturerByIDAsync(long id)
+        public ManufacturerCore GetManufacturerByID(long id, bool includeTobassos = false)
         {
-            return await context.Manufacturer.FindAsync(id);
+            return includeTobassos ?
+                context.Manufacturer.Include(m => m.Tobaccos).First(m => m.ID == id) :
+                context.Manufacturer.Find(id);
         }
         public IEnumerable<ManufacturerCore> GetSortedByDescending()
         {

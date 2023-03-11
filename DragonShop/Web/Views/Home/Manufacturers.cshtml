@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ManufacturerIconModel>
+@{ 
+    ViewData["Title"] = "Бренды";
+    Layout = "_Layout";
+}
+
+<div class="bg-dark">
+    @foreach (var item in Model)
+    {
+        <div>
+            <a asp-controller="Home" asp-action="Home" asp-route-id="@item.ID"><img src="/@item.ImagePath"/></a>
+            <a asp-controller="Home" asp-action="Home" asp-route-id="@item.ID">@item.Name</a>
+        </div>
+    }
+</div>

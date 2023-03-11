@@ -1,6 +1,15 @@
+using BusinessLogic.Common;
+using BusinessLogic.Infrastructure;
+using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
+using Core.Interfaces;
+using Core.Stores;
+using DataAccess.EntityFramework.MSSQL.Infrastucture;
+using DataAccess.EntityFramework.MSSQL.Stores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +33,13 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<IFile, File>();
+            services.AddTransient<IDataLoader, XmlDataLoader>();
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("Server=localhost;Database=DragonShop;Trusted_Connection=True;"));
+            services.AddTransient<IManufacturerStore, ManufacturerStore>();
+
+            services.AddTransient<IManufacturerService, ManufacturerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
