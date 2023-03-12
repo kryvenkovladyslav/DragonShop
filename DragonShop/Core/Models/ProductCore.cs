@@ -13,7 +13,6 @@ namespace Core.Models
         [Column("ID")]
         public long ID { get; set; }
 
-
         [Column("Price")]
         public decimal Price { get; set; }
 

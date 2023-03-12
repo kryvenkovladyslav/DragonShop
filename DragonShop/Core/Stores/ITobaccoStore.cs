@@ -10,8 +10,8 @@ namespace Core.Stores
         public Task<TobaccoCore> GetTobaccoByIDAsync(long id);
         public IEnumerable<TobaccoCore> GetSorted
             (ManufacturerCore manufacturerDAL = null, double? weight = null, bool? isSmoky = null, bool? isMixed = null);
-        public Task CreateAsync(TobaccoCore tobaccoDAL);
-        public Task UpdateAsync(TobaccoCore tobaccoDAL);
+        public Task CreateAsync(TobaccoCore tobaccoCore);
+        public Task UpdateAsync(TobaccoCore tobaccoCore);
         public void Delete(long id);
     }
 }

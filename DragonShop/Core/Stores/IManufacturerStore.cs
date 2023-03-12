@@ -9,8 +9,8 @@ namespace Core.Stores
         public IEnumerable<ManufacturerCore> GetAll(bool includeTobaccos = false);
         public ManufacturerCore GetManufacturerByID(long id, bool includeTobbacos = false);
         public IEnumerable<ManufacturerCore> GetSortedByDescending();
-        public Task CreateAsync(ManufacturerCore manufacturerDAL);
-        public Task UpdateAsync(ManufacturerCore manufacturerDAL);
+        public Task CreateAsync(ManufacturerCore manufacturerCore);
+        public Task UpdateAsync(ManufacturerCore manufacturerCore);
         public void Delete(long id);
     }
 }

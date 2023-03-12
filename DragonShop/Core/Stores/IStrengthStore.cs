@@ -8,8 +8,8 @@ namespace Core.Stores
     {
         public IEnumerable<StrengthCore> GetAll();
         public Task<StrengthCore> GetStengthByIDAsync(long id);
-        public Task CreateAsync(StrengthCore strength);
-        public void Update(StrengthCore strength);
+        public Task CreateAsync(StrengthCore strengthCore);
+        public void Update(StrengthCore strengthCore);
         public void Delete(long id);
     }
 }
