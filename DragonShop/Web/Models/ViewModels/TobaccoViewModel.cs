@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BusinessLogic.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace BusinessLogic.Models
+namespace Web.Models.ViewModels
 {
-    public sealed class TobaccoBL
+    public sealed class TobaccoViewModel
     {
         public long ID { get; set; }
 
@@ -26,11 +28,7 @@ namespace BusinessLogic.Models
 
         public bool IsIced { get; set; }
 
-
-        public long ManufacturerID { get; set; }
-        public ManufacturerBL Manufacturer { get; set; }
-
-
         public ProductBL Product { get; set; }
+
     }
 }

@@ -1,11 +1,57 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html class="main" lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .product-block {
+            text-decoration: none;
+            border-block: double;
+            margin : 4px;
+            display: inline-block;
+
+        }
+        body {
+            background-image: url(/images/domain/bck.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            color: white;
+            font-size: 20px;
+        }
+        .manufacturer-block {
+            height: 150px;
+            width: 150px;
+        }
+        .manufacturer-block :hover {
+            background-color: purple;
+        }
+        .manufacturer-container {
+            border: double;
+            text-align: center;
+            margin: 4px;
+        }
+        a {
+            text-decoration: none;
+        }
+        a :hover{
+            text-decoration: none;
+        }
+        .manufacturer-link {
+            font-size: 30px;
+            text-decoration: none;
+            color: white;
+        }
+            a.manufacturer-link :hover {
+                text-decoration: none;
+                color: white;
+            }
+
+    </style>
 </head>
 <body>
     <header>
@@ -26,6 +72,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Manufacturers">Бренды</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ShippingPayment">Доставка и оплата</a>
                         </li>
                     </ul>
                 </div>

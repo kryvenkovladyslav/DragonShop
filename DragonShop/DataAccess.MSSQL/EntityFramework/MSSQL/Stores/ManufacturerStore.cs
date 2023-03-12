@@ -27,13 +27,13 @@ namespace DataAccess.EntityFramework.MSSQL.Stores
         public IEnumerable<ManufacturerCore> GetAll(bool includeTobassos = false)
         {
             return includeTobassos ?
-                context.Manufacturer.Include(m => m.Tobaccos).OrderBy(manufacturer => manufacturer.Name).ToList() :
+                context.Manufacturer.Include(m => m.Tobaccos).ThenInclude(t => t.Product).OrderBy(manufacturer => manufacturer.Name).ToList() :
                 context.Manufacturer.OrderBy(manufacturer => manufacturer.Name).ToList();
         }
         public ManufacturerCore GetManufacturerByID(long id, bool includeTobassos = false)
         {
             return includeTobassos ?
-                context.Manufacturer.Include(m => m.Tobaccos).First(m => m.ID == id) :
+                context.Manufacturer.Include(m => m.Tobaccos).ThenInclude(t => t.Product).First(m => m.ID == id) :
                 context.Manufacturer.Find(id);
         }
         public IEnumerable<ManufacturerCore> GetSortedByDescending()

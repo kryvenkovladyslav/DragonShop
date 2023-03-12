@@ -1,12 +1,11 @@
 ﻿using BusinessLogic.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessLogic.Interfaces
 {
     public interface IManufacturerService
     {
         public IEnumerable<ManufacturerBL> GetAll(bool includeTobaccos);
+        public ManufacturerBL GetManufacturer(long id, bool includeTobbacos);
     }
 }

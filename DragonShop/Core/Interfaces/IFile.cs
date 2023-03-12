@@ -4,7 +4,7 @@ namespace Core.Interfaces
 {
     public interface IFile
     {
-        public string? Titile { get; set; }
-        public ISet<string> Lines { get; set; }
+        public IList<string> Titiles { get; set; }
+        public IList<string> Lines { get; set; }
     }
 }

@@ -43,8 +43,14 @@ namespace Core.Models
         [ForeignKey("Manufacturer_ID")]
         [Column("Manufacturer_ID")]
         public long ManufacturerID { get; set; }
-
         public ManufacturerCore Manufacturer { get; set; }
+
+        [ForeignKey("Strength_ID")]
+        [Column("Strength_ID")]
+        public long StrengthID { get; set; }
+        public StrengthCore Strength { get; set; }
+
+        public ProductCore Product { get; set; }
 
         public TobaccoCore() { }
 

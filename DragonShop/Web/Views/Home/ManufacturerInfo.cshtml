@@ -1,0 +1,37 @@
+﻿@model ManufacturerViewModel
+@{
+    ViewData["Title"] = "Dragon Shop - " + Model.Name;
+    Layout = "_Layout";
+}
+
+
+<div class="ml-4 mb-5">
+    @foreach (var tobacco in Model.Tobaccos)
+    {
+        if (tobacco.Product != null)
+        {
+            <div class="product-block">
+                <div>
+                    <a asp-controller="Home" asp-action="ProductPage" asp-route-id="@tobacco.Product.ID">
+                        <div><img height="200" width="200" src="/@tobacco.Product.ImagePath" /></div>
+                        <div><p>@tobacco.Name</p></div>
+                        <div><p>@(tobacco.Product.IsAvailable ? "В наличии" : "Нет в наличии")</p></div>
+                        <div><p>Общая сумма</p></div>
+                        <div><p>@tobacco.Product.Price</p></div>
+                    </a>
+                </div>
+                <a asp-controller="Home" asp-action="ToCart" asp-route-id="@tobacco.Product.ID">В корзину</a>
+            </div>
+        }
+    }
+</div>
+
+<div class="mb-5">
+    @for (int i = 0; i < Model.File.Titiles.Count; i++)
+    {
+        <div class="mb-5">
+            <h2>@Model.File.Titiles[i]</h2>
+            <article>@Model.File.Lines[i]</article>
+        </div>
+    }
+</div>

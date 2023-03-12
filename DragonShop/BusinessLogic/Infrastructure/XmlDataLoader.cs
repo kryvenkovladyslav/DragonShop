@@ -1,9 +1,6 @@
 ﻿using Core.Exceptions;
 using Core.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Xml;
 
 namespace BusinessLogic.Infrastructure
@@ -11,23 +8,27 @@ namespace BusinessLogic.Infrastructure
     public class XmlDataLoader : IDataLoader
     {
         private readonly IFile file;
-        public XmlDataLoader(IFile file) => this.file = file;
+        public XmlDataLoader(IFile file)
+        {
+            this.file = file;
+        }
         public IFile Load(string path)
         {
-            if (File.Exists(path))
+            /*if (File.Exists(@"C:\Users\user\source\repos\DragonShop\DragonShop\Web\wwwroot\" + path))
             {
                 throw new FileDoesNotExistException("The file does not exist", path);
-            }
+            }*/
 
             XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.LoadXml(path);
+            xmlDocument.Load(@"C:\Users\user\source\repos\DragonShop\DragonShop\Web\wwwroot\" + path);
 
             XmlElement root = xmlDocument.DocumentElement;
-            var title = root.GetElementsByTagName(nameof(file.Titile).ToLower())[0];
-            var lines = root.GetElementsByTagName(nameof(file.Lines).ToLower());
+            var titles = root.GetElementsByTagName("Title");
+            var lines = root.GetElementsByTagName("Article");
 
-            for (int i = 0; i < lines.Count; i++)
+            for (int i = 0; i < titles.Count; i++)
             {
+                file.Titiles.Add(titles[i].InnerText);
                 file.Lines.Add(lines[i].InnerText);
             }
 

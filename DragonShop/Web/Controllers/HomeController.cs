@@ -1,4 +1,6 @@
-﻿using BusinessLogic.Interfaces;
+﻿using AutoMapper;
+using BusinessLogic.Interfaces;
+using BusinessLogic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,20 +27,39 @@ namespace Web.Controllers
         {
             return View();
         }
-
+        public IActionResult ShippingPayment()
+        {
+            return View();
+        }
         public IActionResult Manufacturers()
         {
-            var manufacturerIcons = new List<ManufacturerIconModel>();
+            var manufacturerIcons = new List<ManufacturerIconViewModel>();
 
             var manufacturers = manufacturerService.GetAll(false);
 
             foreach (var manufacturer in manufacturers)
             {
-                manufacturerIcons.Add(new ManufacturerIconModel 
+                manufacturerIcons.Add(new ManufacturerIconViewModel 
                 { Name = manufacturer.Name, ImagePath = manufacturer.ImagePath, ID = manufacturer.ID });
             }
 
             return View(manufacturerIcons);
+        }
+        public IActionResult ManufacturerInfo(long id)
+        {
+            var manufacturerBL = manufacturerService.GetManufacturer(id, true);
+
+            MapperConfiguration configuration = new MapperConfiguration(config =>
+            {
+                config.CreateMap(typeof(ManufacturerBL), typeof(ManufacturerViewModel));
+                config.CreateMap(typeof(TobaccoBL), typeof(TobaccoViewModel));
+            });
+
+            Mapper mapper = new Mapper(configuration);
+            var manufacturerViewModel = mapper.Map<ManufacturerBL, ManufacturerViewModel>(manufacturerBL);
+
+
+            return View(manufacturerViewModel);
         }
 
         public IActionResult Privacy()

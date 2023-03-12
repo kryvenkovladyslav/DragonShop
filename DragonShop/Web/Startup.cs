@@ -35,6 +35,7 @@ namespace Web
             services.AddControllersWithViews();
 
             services.AddTransient<IFile, File>();
+            services.AddTransient<IList<string>, List<string>>();
             services.AddTransient<IDataLoader, XmlDataLoader>();
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("Server=localhost;Database=DragonShop;Trusted_Connection=True;"));
             services.AddTransient<IManufacturerStore, ManufacturerStore>();
