@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Dragon Shop - Коризна";
+}
+
+<div>
+    <div><h1>Коризина</h1></div>
+    @if (Model.Count() == 0)
+    {
+        <div>
+            <h2>Ваша коризина пуста</h2>
+            <p><a>Перейти к покупкам</a></p>
+        </div>
+    }
+
+</div>
+

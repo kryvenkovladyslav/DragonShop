@@ -1,11 +1,13 @@
 using BusinessLogic.Common;
 using BusinessLogic.Infrastructure;
 using BusinessLogic.Interfaces;
+using BusinessLogic.Models;
 using BusinessLogic.Services;
 using Core.Interfaces;
 using Core.Stores;
 using DataAccess.EntityFramework.MSSQL.Infrastucture;
 using DataAccess.EntityFramework.MSSQL.Stores;
+using DataAccess.MSSQL.Stores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -17,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Models.ViewModels;
 
 namespace Web
 {
@@ -34,12 +37,18 @@ namespace Web
         {
             services.AddControllersWithViews();
 
+            services.AddSingleton<IList<ProductViewModel>, List<ProductViewModel>>();
+
             services.AddTransient<IFile, File>();
             services.AddTransient<IList<string>, List<string>>();
             services.AddTransient<IDataLoader, XmlDataLoader>();
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("Server=localhost;Database=DragonShop;Trusted_Connection=True;"));
+
+
+            services.AddTransient<IProductStore, ProductStore>();
             services.AddTransient<IManufacturerStore, ManufacturerStore>();
 
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IManufacturerService, ManufacturerService>();
         }
 

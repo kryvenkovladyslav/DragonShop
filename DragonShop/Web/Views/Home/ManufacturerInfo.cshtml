@@ -20,7 +20,10 @@
                         <div><p>@tobacco.Product.Price</p></div>
                     </a>
                 </div>
-                <a asp-controller="Home" asp-action="ToCart" asp-route-id="@tobacco.Product.ID">В корзину</a>
+                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                    <input type="hidden" name="id" value="@tobacco.Product.ID" />
+                    <button type="submit">Добавить в корзину</button>
+                </form>
             </div>
         }
     }

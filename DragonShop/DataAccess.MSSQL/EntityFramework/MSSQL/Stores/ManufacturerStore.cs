@@ -24,15 +24,15 @@ namespace DataAccess.EntityFramework.MSSQL.Stores
             context.Manufacturer.Remove(new ManufacturerCore { ID = id });
             context.SaveChanges();
         }
-        public IEnumerable<ManufacturerCore> GetAll(bool includeTobassos = false)
+        public IEnumerable<ManufacturerCore> GetAll(bool includeTobaccos = false)
         {
-            return includeTobassos ?
+            return includeTobaccos ?
                 context.Manufacturer.Include(m => m.Tobaccos).ThenInclude(t => t.Product).OrderBy(manufacturer => manufacturer.Name).ToList() :
                 context.Manufacturer.OrderBy(manufacturer => manufacturer.Name).ToList();
         }
-        public ManufacturerCore GetManufacturerByID(long id, bool includeTobassos = false)
+        public ManufacturerCore GetManufacturerByID(long id, bool includeTobaccos = false)
         {
-            return includeTobassos ?
+            return includeTobaccos ?
                 context.Manufacturer.Include(m => m.Tobaccos).ThenInclude(t => t.Product).First(m => m.ID == id) :
                 context.Manufacturer.Find(id);
         }

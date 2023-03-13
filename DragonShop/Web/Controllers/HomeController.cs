@@ -10,22 +10,53 @@ using System.Linq;
 using System.Threading.Tasks;
 using Web.Models;
 using Web.Models.ViewModels;
+using Web.Models.ViewModels.Home;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IManufacturerService manufacturerService;
-        private readonly ILogger<HomeController> _logger;
+        private readonly IProductService productService;
 
-        public HomeController(IManufacturerService manufacturerService)
+        public HomeController(IManufacturerService manufacturerService, IProductService productService)
         {
             this.manufacturerService = manufacturerService;
+            this.productService = productService;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult ContactForm()
+        {
+            return View(new ContactViewModel());
+        }
+        [HttpPost]
+        public IActionResult ContactForm(ContactViewModel contactViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            return RedirectToAction(nameof(Index));
+        } 
+        public async Task<IActionResult> ProductPage(long id)
+        {
+            var productBL = await productService.GetProduct(id, true);
+
+            MapperConfiguration configuration = new MapperConfiguration(config =>
+            {
+                config.CreateMap(typeof(ProductBL), typeof(ProductViewModel));
+                config.CreateMap(typeof(TobaccoBL), typeof(TobaccoViewModel));
+            });
+
+            Mapper mapper = new Mapper(configuration);
+            var productViewModel = mapper.Map<ProductBL, ProductViewModel>(productBL);
+
+            return View(productViewModel);
         }
         public IActionResult ShippingPayment()
         {
@@ -61,6 +92,8 @@ namespace Web.Controllers
 
             return View(manufacturerViewModel);
         }
+
+        
 
         public IActionResult Privacy()
         {

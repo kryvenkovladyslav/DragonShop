@@ -1,0 +1,43 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Dragon Shop - " + Model.Tobacco.Name;
+    Layout = "_Layout";
+}
+
+<div>
+    <div>
+        <div><img src="/@Model.ImagePath"/></div>
+        <div>
+            <div><h1>@Model.Tobacco.Name</h1></div>
+            <div>
+                <p>@(Model.IsAvailable ? "Есть в наличии" : "Нет в наличии")</p>
+                <p>Вес - @Model.Tobacco.Weight</p>
+                <p>Упаковка - @Model.Tobacco.Package</p>
+                <p>Сырье - @Model.Tobacco.Leaf</p>
+                <p>Крепость - @Model.Tobacco.Strength.Kind</p>
+                <p>Дымность - @(Model.Tobacco.IsMint ? "Мятный" : "Не мятный")</p>
+                <p>Мята - @(Model.Tobacco.IsMint ? "Мятный" : "Не мятный")</p>
+                <p>Сладость - @(Model.Tobacco.IsSweet ? "Cладкий" : "Не сладкий")</p>
+                <p>Свежесть - @(Model.Tobacco.IsIced ? "Cвежий" : "Не свежий")</p>
+                <p>Микс - @(Model.Tobacco.IsMixed ? "Моно вкус" : "Микс вкусов")</p>
+            </div>
+            <div>
+                <h3>@(Model.Price + Model.Discount * Model.Price)₴</h3>
+                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <button type="submit">Добавить в корзину</button>
+                </form>
+            </div>
+            <div>
+                <h2>Заказать в один клик</h2>
+                <form asp-controller="Home" asp-action="SendPhoneNumber" method="post">
+                    <div class="form-group">
+                        <label for="phone">Ваш номер телефона:</label>
+                        <input name="phone" type="tel"  class="form-control" placeholder="+38 (0)" />
+                    </div>
+                    <button type="submit">Заказать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
